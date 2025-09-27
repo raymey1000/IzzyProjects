@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Izzy Visit Calendar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fdfde3;
+      color: #333;
+    }
+    header {
+      background: #ffcc00;
+      color: #003366;
+      text-align: center;
+      padding: 1em;
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+    header span {
+      font-size: 1.2em;
+    }
+    .container {
+      padding: 1em;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 2em;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #003366;
+      color: white;
+    }
+    .calendar {
+      margin-bottom: 2em;
+    }
+    .month {
+      text-align: center;
+      font-size: 1.3em;
+      margin: 0.5em 0;
+      color: #003366;
+    }
+    .cal-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cal-table th, .cal-table td {
+      border: 1px solid #ccc;
+      width: 14.2%;
+      height: 80px;
+      vertical-align: top;
+      padding: 4px;
+      font-size: 0.9em;
+    }
+    .event {
+      display: block;
+      background: #ffcc00;
+      color: #003366;
+      padding: 2px 4px;
+      margin-top: 2px;
+      border-radius: 4px;
+      font-size: 0.7em;
+      font-weight: bold;
+      word-wrap: break-word;
+    }
+    .back-button {
+      display: block;
+      margin: 2em auto;
+      padding: 0.75em 1.5em;
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      max-width: 220px;
+    }
+  </style>
+</head>
+<body>
+  <header>🐌 Izzy Visit Calendar <span>(Go Slugs!)</span></header>
+  <div class="container">
+
+    <h2>Event Table</h2>
+    <table>
+      <tr><th>Date</th><th>Event</th><th>Comments</th></tr>
+      <tr><td>9/27</td><td>Stereophonics Gig</td><td><a href="https://www.stereophonics.com/" target="_blank">Link</a></td></tr>
+      <tr><td>10/2</td><td>Rays Bday</td><td></td></tr>
+      <tr><td>10/11</td><td>Best Buddies Gig for Ukelectics</td><td></td></tr>
+      <tr><td>10/13</td><td>Indigenous Peoples' Day</td><td>Helen, Ray are off</td></tr>
+      <tr><td>11/7-11/9</td><td>Family Weekend</td><td><a href="https://calendar.ucsc.edu/event/family-weekend-2025" target="_blank">UCSC Link</a></td></tr>
+      <tr><td>11/9</td><td>Assistance League Gig</td><td></td></tr>
+      <tr><td>11/11</td><td>Veteran's Day Off</td><td></td></tr>
+      <tr><td>11/19-11/26</td><td>Helen's Trip to Ireland</td><td></td></tr>
+      <tr><td>11/27-11/28</td><td>Thanksgiving</td><td></td></tr>
+      <tr><td>12/12</td><td>Fall Quarter Ends</td><td></td></tr>
+      <tr><td>1/05</td><td>Winter Quarter Begins</td><td></td></tr>
+    </table>
+
+    <div class="calendar">
+      <div class="month">October 2025</div>
+      <table class="cal-table">
+        <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+        <tr><td></td><td></td><td></td><td>1</td><td>2 <span class="event">Ray Bday</span></td><td>3</td><td>4</td></tr>
+        <tr><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11 <span class="event">Uke Gig</span></td></tr>
+        <tr><td>12</td><td>13 <span class="event">Indigenous Day</span></td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td></tr>
+        <tr><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td></tr>
+        <tr><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td><td>31</td><td></td></tr>
+      </table>
+    </div>
+
+    <div class="calendar">
+      <div class="month">November 2025</div>
+      <table class="cal-table">
+        <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+        <tr><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7 <span class="event">Family Wknd</span></td><td>8 <span class="event">Family Wknd</span></td></tr>
+        <tr><td>9 <span class="event">Fam Wknd</span><span class="event">League Gig</span></td><td>10</td><td>11 <span class="event">Veterans</span></td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+        <tr><td>16</td><td>17</td><td>18</td><td>19 <span class="event">Ireland</span></td><td>20 <span class="event">Ireland</span></td><td>21 <span class="event">Ireland</span></td><td>22 <span class="event">Ireland</span></td></tr>
+        <tr><td>23 <span class="event">Ireland</span></td><td>24 <span class="event">Ireland</span></td><td>25 <span class="event">Ireland</span></td><td>26 <span class="event">Ireland</span></td><td>27 <span class="event">Thanks</span></td><td>28 <span class="event">Thanks</span></td><td>29</td></tr>
+        <tr><td>30</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </table>
+    </div>
+
+    <div class="calendar">
+      <div class="month">December 2025</div>
+      <table class="cal-table">
+        <tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr>
+        <tr><td></td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+        <tr><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12 <span class="event">Quarter Ends</span></td><td>13</td></tr>
+        <tr><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td></tr>
+        <tr><td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td></tr>
+        <tr><td>28</td><td>29</td><td>30</td><td>31</td><td></td><td></td><td></td></tr>
+      </table>
+    </div>
+
+    <a href="index.html" class="back-button">⬅ Back to Index</a>
+  </div>
+</body>
+</html>

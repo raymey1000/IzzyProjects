@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Driving Miss Izzy</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #a8edea, #fed6e3);
+    margin: 0;
+    padding: 0 10px 80px 10px; /* bottom padding for index button */
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #ff5722;
+    text-shadow: 1px 1px 2px #fff;
+  }
+  h2 {
+    color: #2196f3;
+    margin-top: 25px;
+  }
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  a {
+    color: #ff5722;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  li {
+    background: #fff9c4;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+  }
+  li.completed {
+    background: #c8e6c9;
+    text-decoration: line-through;
+    color: #555;
+  }
+  li input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+  }
+  iframe {
+    width: 100%;
+    height: 250px;
+    border: 0;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  /* Back to index button */
+  .back-index {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    z-index: 1000;
+  }
+  .back-index a {
+    display: inline-block;
+    background: #ff5722;
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .back-index a:hover {
+    background: #e64a19;
+  }
+</style>
+</head>
+<body>
+
+<h1>🚗 Driving Miss Izzy</h1>
+
+<h2>Driving in One Day</h2>
+<p>
+Driving to/from Santa Cruz takes around 7 hours. We used <code>Apple Maps</code> and found the best time to leave as L.A. affects the driving greatly due to rush hour traffic. Leaving early ensures the driver isn’t too tired at the end of the journey.
+</p>
+<p>
+Helen found an In & Out just after the <a href="https://www.google.com/maps/place/In-N-Out+Burger/@34.9853459,-118.9535406,15.64z/data=!4m6!3m5!1s0x80e9f6016a05e9c9:0x1e86352915241b8f!8m2!3d34.9833766!4d-118.9482703!16s%2Fg%2F1tcyfsff!5m1!1e2?entry=ttu&g_ep=EgoyMDI1MDkyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank">LA mountains</a> that is a great stop.
+</p>
+
+<h2>Car Play</h2>
+<ul>
+  <li>Car play still doesn't work on Helen's car</li>
+  <li>Cleaning the port on my phone made my phone work with car play.</li>
+  <li><input type="checkbox"> Get Car play to work on Helen's car.</li>
+  <li><input type="checkbox"> Get phone input jack cleaning kit online <a href="https://www.amazon.com/s?k=iphone+lightning+port+iphone+14+cleaning+kit" target="_blank">EDM cleaning</a></li>
+</ul>
+
+<h2>Car Service</h2>
+<ul>
+  <li>The Audi was serviced before the trip which helped greatly.</li>
+  <li>Need to service the Mazda 3.</li>
+  <li class="completed"><input type="checkbox" checked> Book a service for the Mazda 3 (Booked for Fri 26 Sept 8:20AM)</li>
+  <li><input type="checkbox"> Service the Mazda 3</li>
+</ul>
+
+<h2>Audi Windscreen</h2>
+<ul>
+  <li class="completed"><input type="checkbox" checked> Replaced the windscreen on the Audi ($540)</li>
+</ul>
+
+<h2>Toll Roads</h2>
+<ul>
+  <li><input type="checkbox"> Pay the toll roads.</li>
+</ul>
+
+<h2>Roadside Assistance</h2>
+<ul>
+  <li>AAA Call 1.800.400.4222</li>
+  <li>Club Code #620 004 9093416305</li>
+  <li>Caitlin has her own account.</li>
+</ul>
+
+<!-- Back to Index Button -->
+<div class="back-index">
+  <a href="index.html">⬅ Back to Index</a>
+</div>
+
+</body>
+</html>
