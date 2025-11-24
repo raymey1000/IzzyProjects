@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying Home 🏠 - Thanksgiving 2025</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+        .tab-active {
+            background-color: #dbeafe; /* bg-blue-100 */
+            color: #1d4ed8; /* text-blue-700 */
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        .tab-inactive {
+            color: #6b7280; /* text-gray-500 */
+        }
+        .tab-inactive:hover {
+            color: #374151; /* text-gray-700 */
+        }
+        /* Hide scrollbar for cleaner look */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 font-sans pb-24 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-blue-900 text-white p-6 pb-12 rounded-b-[2.5rem] shadow-xl relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -mt-20 -mr-20"></div>
+        <div class="absolute bottom-0 left-0 w-32 h-32 bg-blue-400 opacity-10 rounded-full -mb-10 -ml-10"></div>
+        
+        <div class="relative z-10">
+            <div class="flex items-center justify-between mb-2">
+                <h1 class="text-2xl font-bold tracking-tight">Flying Home 🏠</h1>
+                <i data-lucide="plane" class="text-blue-300"></i>
+            </div>
+            <p class="text-blue-200 text-sm">Thanksgiving 2025 • Isabella</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-4 -mt-8 relative z-20 max-w-lg mx-auto">
+        
+        <!-- Navigation Tabs -->
+        <div class="bg-white p-1 rounded-xl shadow-md flex mb-6">
+            <button onclick="switchTab('flights')" id="tab-flights" class="flex-1 py-3 rounded-lg text-sm font-semibold transition-all tab-active">
+                Flights
+            </button>
+            <button onclick="switchTab('car')" id="tab-car" class="flex-1 py-3 rounded-lg text-sm font-semibold transition-all tab-inactive">
+                Car & Ride
+            </button>
+            <button onclick="switchTab('checklist')" id="tab-checklist" class="flex-1 py-3 rounded-lg text-sm font-semibold transition-all tab-inactive">
+                To-Do
+            </button>
+        </div>
+
+        <!-- FLIGHTS SECTION -->
+        <div id="content-flights" class="space-y-6 animate-fadeIn">
+            <!-- App Download -->
+            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 flex items-start gap-3">
+                <i data-lucide="download" class="text-blue-600 flex-shrink-0 mt-1" width="20"></i>
+                <div>
+                    <h3 class="font-bold text-blue-900">Get the App</h3>
+                    <p class="text-sm text-blue-700 mb-2">Download Alaska Airlines for your boarding pass.</p>
+                    <a href="https://apps.apple.com/us/app/alaska-airlines/id356143077" target="_blank" class="inline-block bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                        App Store Link
+                    </a>
+                </div>
+            </div>
+
+            <!-- Outbound Flight Card -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-8 border-blue-600 relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-100 rounded-full opacity-50 blur-xl"></div>
+                <div class="flex justify-between items-center mb-4 relative z-10">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Outbound</span>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-500 uppercase">Confirmation</p>
+                        <p class="font-mono font-bold text-lg text-blue-600 tracking-wider">EOUHWY</p>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center mb-6 relative z-10">
+                    <div class="text-center">
+                        <div class="text-3xl font-black text-gray-800">SJC</div>
+                        <div class="text-xs text-gray-500">San Jose</div>
+                        <div class="text-lg font-bold text-blue-600 mt-1">10:30 AM</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center px-4">
+                        <i data-lucide="plane" class="text-blue-400 w-6 h-6 rotate-90 mb-1"></i>
+                        <div class="w-full h-0.5 bg-blue-200 relative">
+                            <div class="absolute w-2 h-2 bg-blue-400 rounded-full left-0 -top-0.5"></div>
+                            <div class="absolute w-2 h-2 bg-blue-400 rounded-full right-0 -top-0.5"></div>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">Thu, Nov 27</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-black text-gray-800">SAN</div>
+                        <div class="text-xs text-gray-500">San Diego</div>
+                        <div class="text-lg font-bold text-blue-600 mt-1">11:59 AM</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Return Flight Card -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6 border-l-8 border-blue-600 relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-blue-100 rounded-full opacity-50 blur-xl"></div>
+                <div class="flex justify-between items-center mb-4 relative z-10">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Return</span>
+                </div>
+                <div class="flex justify-between items-center mb-6 relative z-10">
+                    <div class="text-center">
+                        <div class="text-3xl font-black text-gray-800">SAN</div>
+                        <div class="text-xs text-gray-500">San Diego</div>
+                        <div class="text-lg font-bold text-blue-600 mt-1">05:40 PM</div>
+                    </div>
+                    <div class="flex-1 flex flex-col items-center px-4">
+                        <i data-lucide="plane" class="text-blue-400 w-6 h-6 rotate-90 mb-1"></i>
+                        <div class="w-full h-0.5 bg-blue-200 relative">
+                            <div class="absolute w-2 h-2 bg-blue-400 rounded-full left-0 -top-0.5"></div>
+                            <div class="absolute w-2 h-2 bg-blue-400 rounded-full right-0 -top-0.5"></div>
+                        </div>
+                        <div class="text-xs text-gray-400 mt-1">Sun, Nov 30</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-black text-gray-800">SJC</div>
+                        <div class="text-xs text-gray-500">San Jose</div>
+                        <div class="text-lg font-bold text-blue-600 mt-1">07:18 PM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CAR SECTION -->
+        <div id="content-car" class="space-y-6 hidden animate-fadeIn">
+            <!-- Driver Card -->
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                <div class="bg-gray-800 p-4 flex items-center justify-between text-white">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="car" class="text-yellow-400"></i>
+                        <span class="font-bold">Ride to Airport</span>
+                    </div>
+                    <span class="bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded">Nov 27</span>
+                </div>
+                
+                <div class="p-6">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-2xl">🚕</div>
+                        <div>
+                            <h3 class="text-lg font-bold text-gray-900">Victor Diaz</h3>
+                            <a href="tel:6692705819" class="text-blue-600 text-sm font-semibold flex items-center gap-1 hover:underline">
+                                <i data-lucide="phone" width="14"></i> (669) 270-5819
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="clock" class="text-gray-400 mt-1" width="18"></i>
+                            <div>
+                                <p class="font-bold text-gray-800">7:30 AM (Latest)</p>
+                                <p class="text-xs text-gray-500">Pick up time. Takes ~50 mins to airport.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="map-pin" class="text-gray-400 mt-1" width="18"></i>
+                            <div>
+                                <p class="font-bold text-gray-800">Parking Lot 166</p>
+                                <p class="text-xs text-gray-500">College Nine Rd, Santa Cruz, CA 95064</p>
+                                <a href="https://www.google.com/maps/dir/College+Nine+Rd,+Santa+Cruz,+CA+95064/San+Jose+Mineta+International+Airport,+1701+Airport+Blvd+Ste+B-1130,+San+Jose,+CA+95110" target="_blank" class="text-blue-500 text-xs mt-1 inline-block underline">
+                                    Open Maps Directions
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-3 items-start">
+                            <i data-lucide="credit-card" class="text-gray-400 mt-1" width="18"></i>
+                            <div>
+                                <p class="font-bold text-emerald-600">$100.00</p>
+                                <p class="text-xs text-gray-500">Cash only. Have it ready beforehand.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map Image -->
+            <div class="bg-white p-4 rounded-xl shadow-md">
+                <div class="flex items-center gap-2 mb-2">
+                    <i data-lucide="map-pin" class="text-red-500" width="18"></i>
+                    <h4 class="font-bold text-gray-800 text-sm">Pickup Spot: Lot 166</h4>
+                </div>
+                <div class="rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
+                    <img src="pickupLocation.png" alt="Pickup Location Map" class="w-full h-auto object-cover" onerror="this.parentElement.innerHTML='<div class=\'p-8 text-center text-gray-400 bg-gray-100 flex flex-col items-center justify-center\'><p>Map Image Placeholder</p><span class=\'text-xs mt-1\'>(Ensure pickupLocation.png is in the same folder)</span></div>'">
+                </div>
+            </div>
+
+            <div class="bg-orange-50 border border-orange-100 p-4 rounded-xl">
+                <h4 class="text-orange-800 font-bold text-sm mb-1">⚠️ Important Note</h4>
+                <p class="text-orange-700 text-xs">
+                    Since it's Thanksgiving, rideshare apps might be busy. Victor is confirmed, but be punctual!
+                </p>
+            </div>
+        </div>
+
+        <!-- CHECKLIST SECTION -->
+        <div id="content-checklist" class="space-y-6 hidden animate-fadeIn">
+            
+            <!-- Day Before -->
+            <div>
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold text-gray-700 flex items-center gap-2">
+                        <i data-lucide="luggage" width="18"></i> Day Before
+                    </h3>
+                    <span id="progress-day_before" class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">0%</span>
+                </div>
+                <div id="list-day_before"></div>
+            </div>
+
+            <!-- Morning -->
+            <div>
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="font-bold text-gray-700 flex items-center gap-2">
+                        <i data-lucide="home" width="18"></i> Morning: Nov 27
+                    </h3>
+                    <span id="progress-morning" class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-full">0%</span>
+                </div>
+                <div id="list-morning"></div>
+            </div>
+
+            <button onclick="resetChecklist()" class="w-full py-3 text-gray-400 text-sm hover:text-gray-600 transition">
+                Reset Checklist
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+        // --- Data ---
+        const initialTodos = [
+            { id: 'db-1', section: 'day_before', text: 'Check-in on your flights (App)', checked: false },
+            { id: 'db-2', section: 'day_before', text: 'Pack your stuff (Try for one carry-on!)', checked: false },
+            { id: 'db-3', section: 'day_before', text: 'Dad will confirm Victor (Driver)', checked: false },
+            { id: 'db-4', section: 'day_before', text: 'Have $100-$110 cash ready for Victor', checked: false },
+            { id: 'm-1', section: 'morning', text: 'Get up early! Ready by 7:00 AM', checked: false },
+            { id: 'm-2', section: 'morning', text: '7:00 AM: Meet Victor at Lot 166', checked: false },
+            { id: 'm-3', section: 'morning', text: '8:00 AM: Pay Victor ($100) & go inside', checked: false },
+            { id: 'm-4', section: 'morning', text: 'Bag drop (if needed) & Security', checked: false },
+            { id: 'm-5', section: 'morning', text: '10:00 AM: Boarding Time', checked: false },
+            { id: 'm-6', section: 'morning', text: '12:00 PM: Arrive in SD - Cait at Baggage Claim', checked: false },
+        ];
+
+        let todos = [];
+
+        // --- Init ---
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            loadTodos();
+            renderTodos();
+        });
+
+        // --- Tabs ---
+        function switchTab(tabName) {
+            // Update Buttons
+            ['flights', 'car', 'checklist'].forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (t === tabName) {
+                    btn.classList.remove('tab-inactive');
+                    btn.classList.add('tab-active');
+                    btn.classList.add('bg-blue-100', 'text-blue-700', 'shadow-sm');
+                    btn.classList.remove('text-gray-500');
+                } else {
+                    btn.classList.add('tab-inactive');
+                    btn.classList.remove('tab-active');
+                    btn.classList.remove('bg-blue-100', 'text-blue-700', 'shadow-sm');
+                    btn.classList.add('text-gray-500');
+                }
+            });
+
+            // Update Content
+            ['flights', 'car', 'checklist'].forEach(t => {
+                const content = document.getElementById(`content-${t}`);
+                if (t === tabName) {
+                    content.classList.remove('hidden');
+                } else {
+                    content.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- Checklist Logic ---
+        function loadTodos() {
+            const saved = localStorage.getItem('holiday_travel_checklist_v1_html');
+            if (saved) {
+                todos = JSON.parse(saved);
+            } else {
+                todos = JSON.parse(JSON.stringify(initialTodos)); // Deep copy
+            }
+        }
+
+        function saveTodos() {
+            localStorage.setItem('holiday_travel_checklist_v1_html', JSON.stringify(todos));
+        }
+
+        function toggleTodo(id) {
+            const todo = todos.find(t => t.id === id);
+            if (todo) {
+                todo.checked = !todo.checked;
+                saveTodos();
+                renderTodos();
+            }
+        }
+
+        function resetChecklist() {
+            if (confirm("Reset all items?")) {
+                todos = JSON.parse(JSON.stringify(initialTodos));
+                saveTodos();
+                renderTodos();
+            }
+        }
+
+        function renderTodos() {
+            renderSection('day_before');
+            renderSection('morning');
+            updateProgress('day_before');
+            updateProgress('morning');
+            lucide.createIcons(); // Re-init icons for new DOM elements
+        }
+
+        function renderSection(section) {
+            const container = document.getElementById(`list-${section}`);
+            container.innerHTML = '';
+            
+            const sectionTodos = todos.filter(t => t.section === section);
+            
+            sectionTodos.forEach(todo => {
+                const isChecked = todo.checked;
+                const div = document.createElement('div');
+                div.onclick = () => toggleTodo(todo.id);
+                div.className = `flex items-start p-4 mb-3 rounded-xl cursor-pointer transition-all duration-200 border select-none ${
+                    isChecked 
+                    ? 'bg-emerald-50 border-emerald-200' 
+                    : 'bg-white border-gray-100 shadow-sm hover:shadow-md'
+                }`;
+
+                div.innerHTML = `
+                    <div class="mt-0.5 mr-3 flex-shrink-0 transition-colors ${isChecked ? 'text-emerald-500' : 'text-gray-300'}">
+                        <i data-lucide="${isChecked ? 'check-square' : 'square'}" width="24"></i>
+                    </div>
+                    <span class="text-sm md:text-base leading-snug ${isChecked ? 'text-gray-400 line-through' : 'text-gray-700'}">
+                        ${todo.text}
+                    </span>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function updateProgress(section) {
+            const sectionTodos = todos.filter(t => t.section === section);
+            const completed = sectionTodos.filter(t => t.checked).length;
+            const percent = Math.round((completed / sectionTodos.length) * 100);
+            document.getElementById(`progress-${section}`).textContent = `${percent}%`;
+        }
+    </script>
+</body>
+</html>
