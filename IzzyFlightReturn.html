@@ -31,6 +31,33 @@
             border-bottom: 2px solid #007bff;
             padding-bottom: 5px;
             margin-top: 25px;
+            cursor: pointer; /* Makes header clickable */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .collapsible-header::after {
+            content: '▼';
+            transition: transform 0.3s;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+        .collapsible-header.collapsed::after {
+            content: '▶';
+        }
+        .collapsible-header.completed-section {
+            background-color: #d4edda; /* Light green background for completed sections */
+            border-color: #28a745;
+        }
+        .collapsible-content {
+            display: block;
+            padding: 10px 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            max-height: 2000px; /* Large enough for expanded state */
+        }
+        .collapsible-content.collapsed {
+            display: none; /* Hide when collapsed */
         }
         .flight-info {
             background-color: #e9ecef;
@@ -86,100 +113,175 @@
             font-size: 1.1em;
             margin: 15px 0;
         }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            padding: 5px 10px;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-	<a href="index.html">⬅ Back to Index</a>
+    <a href="index.html" class="back-link">⬅✈️ Back to Index</a>
     <h1>✈️ Your Flight Guide to SJC</h1>
 
-    <h3>Day Before Preparation</h3>
-    <ul class="task-list" id="prep-list">
-        <li data-task="prep1"><input type="checkbox" id="prep1"><label for="prep1">Move luggage into Pink Suitcase as you can use that on way back.</label></li>
-        <li data-task="prep2"><input type="checkbox" id="prep2"><label for="prep2">Check in online in your Alaska airlines app.</label></li>
-        <li data-task="prep3"><input type="checkbox" id="prep3"><label for="prep3">Make sure you have 'Uber App' downloaded (<a href="apps.apple.com" target="_blank">link</a>).</label></li>
-        <li data-task="prep4"><input type="checkbox" id="prep4"><label for="prep4">Practice putting in the pickup location.</label></li>
-    </ul>
-
-    <h3>✈️ Departure Day Itinerary</h3>
-
-    <h4>Phase 1: Departure in San Diego (SAN)</h4>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Time</th>
-                <th>Activity</th>
-                <th>Details</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>~12:30 PM</td>
-                <td>Leave Home</td>
-                <td>Drive time is about 40 mins to Shore House.</td>
-            </tr>
-            <tr>
-                <td>3:40 PM</td>
-                <td>Arrive at SAN Airport</td>
-                <td>Head straight to <strong>Terminal 2</strong> for Alaska Airlines.</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <div class="flight-info">
-        **Key Information:** Your flight, **Alaska Airlines 3498**, departs from **Terminal 2** at San Diego Airport (SAN).
+    <!-- Day Before Preparation Section -->
+    <h3 class="collapsible-header" data-target="prep-content">Day Before Preparation</h3>
+    <div class="collapsible-content" id="prep-content">
+        <ul class="task-list" id="prep-list">
+            <li data-task="prep1"><input type="checkbox" id="prep1"><label for="prep1">Move luggage into Pink Suitcase as you can use that on way back.</label></li>
+            <li data-task="prep2"><input type="checkbox" id="prep2"><label for="prep2">Check in online in your Alaska airlines app.</label></li>
+            <li data-task="prep3"><input type="checkbox" id="prep3"><label for="prep3">Make sure you have 'Uber App' downloaded (<a href="apps.apple.com" target="_blank">link</a>).</label></li>
+            <li data-task="prep4"><input type="checkbox" id="prep4"><label for="prep4">Practice putting in the pickup location.</label></li>
+        </ul>
     </div>
 
-    <h4>1. Check in Bag and Go Through Security</h4>
-    <ul class="task-list" id="checkin-list">
-        <li data-task="checkin1"><input type="checkbox" id="checkin1"><label for="checkin1"><strong>Check-in:</strong> Proceed to the Alaska Airlines counter in Terminal 2 with your photo ID (e.g., driver's license or passport) to check your luggage.</label></li>
-        <li data-task="checkin2"><input type="checkbox" id="checkin2"><label for="checkin2"><strong>Security:</strong> Follow the signs for the TSA Security Checkpoint.</label></li>
-        <li data-task="checkin3"><input type="checkbox" id="checkin3"><label for="checkin3">Ensure liquids in your carry-on comply with <a href="www.tsa.gov" target="_blank">TSA's 3-1-1 liquids rule</a> (containers 3.4 oz or smaller in one clear, quart-sized bag).</label></li>
-    </ul>
+    <!-- Departure Day Itinerary Section (Main Section Header) -->
+    <h3 class="collapsible-header collapsed" data-target="itinerary-content">✈️ Departure Day Itinerary</h3>
+    <div class="collapsible-content collapsed" id="itinerary-content">
+        
+        <!-- Phase 1 Sub-section Header -->
+        <h4 class="collapsible-header collapsed" data-target="phase1-content">Phase 1: Departure in San Diego (SAN)</h4>
+        <div class="collapsible-content collapsed" id="phase1-content">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Activity</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>~12:30 PM</td>
+                        <td>Leave Home</td>
+                        <td>Drive time is about 40 mins to Shore House.</td>
+                    </tr>
+                    <tr>
+                        <td>3:40 PM</td>
+                        <td>Arrive at SAN Airport</td>
+                        <td>Head straight to <strong>Terminal 2</strong> for Alaska Airlines.</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <h4>2. Board Your Flight</h4>
-    <ul class="task-list" id="boarding-list">
-        <li data-task="board1"><input type="checkbox" id="board1"><label for="board1"><strong>Boarding Time:</strong> Boarding typically begins around <strong>5:10 PM</strong>.</label></li>
-        <li data-task="board2"><input type="checkbox" id="board2"><label for="board2"><strong>Departure Time:</strong> The flight is scheduled to leave at <strong>5:40 PM</strong> for San Jose (SJC).</label></li>
-        <li data-task="board3"><input type="checkbox" id="board3"><label for="board3"><strong>Gate:</strong> Check the airport monitors for the current gate number for Alaska Airlines 3498.</label></li>
-    </ul>
+            <div class="flight-info">
+                **Key Information:** Your flight, **Alaska Airlines 3498**, departs from **Terminal 2** at San Diego Airport (SAN).
+            </div>
 
-    <h4>Phase 2: Arrival at San Jose Airport (SJC)</h4>
+            <!-- Check-in & Security Sub-section -->
+            <h4>1. Check in Bag and Go Through Security</h4>
+            <ul class="task-list" id="checkin-list">
+                <li data-task="checkin1"><input type="checkbox" id="checkin1"><label for="checkin1"><strong>Check-in:</strong> Proceed to the Alaska Airlines counter in Terminal 2 with your photo ID (e.g., driver's license or passport) to check your luggage.</label></li>
+                <li data-task="checkin2"><input type="checkbox" id="checkin2"><label for="checkin2"><strong>Security:</strong> Follow the signs for the TSA Security Checkpoint.</label></li>
+                <li data-task="checkin3"><input type="checkbox" id="checkin3"><label for="checkin3">Ensure liquids in your carry-on comply with <a href="www.tsa.gov" target="_blank">TSA's 3-1-1 liquids rule</a> (containers 3.4 oz or smaller in one clear, quart-sized bag).</label></li>
+            </ul>
 
-    <h4>3. Pick Up Luggage at Baggage Claim</h4>
-    <ul class="task-list" id="baggage-list">
-        <li data-task="baggage1"><input type="checkbox" id="baggage1"><label for="baggage1"><strong>Follow Signs:</strong> After exiting the plane, follow the signs for "Baggage Claim".</label></li>
-        <li data-task="baggage2"><input type="checkbox" id="baggage2"><label for="baggage2"><strong>Location:</strong> Alaska Airlines arrives at <strong>Terminal B</strong> at SJC. The baggage claim is on the lower level.</label></li>
-        <li data-task="baggage3"><input type="checkbox" id="baggage3"><label for="baggage3"><strong>Carousel:</strong> Look for your flight number (3498) on the display monitors to confirm the correct carousel number (likely B1).</label></li>
-    </ul>
+            <!-- Boarding Sub-section -->
+            <h4>2. Board Your Flight</h4>
+            <ul class="task-list" id="boarding-list">
+                <li data-task="board1"><input type="checkbox" id="board1"><label for="board1"><strong>Boarding Time:</strong> Boarding typically begins around <strong>5:10 PM</strong>.</label></li>
+                <li data-task="board2"><input type="checkbox" id="board2"><label for="board2"><strong>Departure Time:</strong> The flight is scheduled to leave at <strong>5:40 PM</strong> for San Jose (SJC).</label></li>
+                <li data-task="board3"><input type="checkbox" id="board3"><label for="board3"><strong>Gate:</strong> Check the airport monitors for the current gate number for Alaska Airlines 3498.</label></li>
+            </ul>
+        </div> <!-- End of Phase 1 Content -->
 
-    <h4>4. Make Your Way to the Uber/Rideshare Pickup Area</h4>
-    <ul class="task-list" id="uber-prep-list">
-        <li data-task="uberprep1"><input type="checkbox" id="uberprep1"><label for="uberprep1"><strong>Follow Signs:</strong> Follow the signs for "Rideshare Pickup" or "Ground Transportation".</label></li>
-        <li data-task="uberprep2"><input type="checkbox" id="uberprep2"><label for="uberprep2"><strong>Location:</strong> The designated pickup area for Terminal B is located <strong>south of Terminal B</strong> in the hourly parking Lot 5.</label></li>
-    </ul>
+        <!-- Phase 2 Sub-section Header -->
+        <h4 class="collapsible-header collapsed" data-target="phase2-content">Phase 2: Arrival at San Jose Airport (SJC)</h4>
+        <div class="collapsible-content collapsed" id="phase2-content">
 
-    <h4>5. Request Your Uber</h4>
-    <ul class="task-list" id="uber-ride-list">
-        <li data-task="uberride1"><input type="checkbox" id="uberride1"><label for="uberride1"><strong>Open App:</strong> Once you are in the Lot 5 pickup area, open the Uber app.</label></li>
-        <li data-task="uberride2"><input type="checkbox" id="uberride2"><label for="uberride2"><strong>Estimated Cost:</strong> The ride to your destination will cost approximately <strong>$75</strong>. (Check dad transferred the money!)</label></li>
-        <li data-task="uberride3"><input type="checkbox" id="uberride3"><label for="uberride3"><strong>Enter Destination:</strong> Type the exact address into the destination field:</label></li>
-    </ul>
-    
-    <div class="uber-address">
-        <strong>Parking Lot 166, College Nine Rd, Santa Cruz</strong>
-    </div>
+            <!-- Baggage Claim Sub-section -->
+            <h4>3. Pick Up Luggage at Baggage Claim</h4>
+            <ul class="task-list" id="baggage-list">
+                <li data-task="baggage1"><input type="checkbox" id="baggage1"><label for="baggage1"><strong>Follow Signs:</strong> After exiting the plane, follow the signs for "Baggage Claim".</label></li>
+                <li data-task="baggage2"><input type="checkbox" id="baggage2"><label for="baggage2"><strong>Location:</strong> Alaska Airlines arrives at <strong>Terminal B</strong> at SJC. The baggage claim is on the lower level.</label></li>
+                <li data-task="baggage3"><input type="checkbox" id="baggage3"><label for="baggage3"><strong>Carousel:</strong> Look for your flight number (3498) on the display monitors to confirm the correct carousel number (likely B1).</label></li>
+            </ul>
 
-    <ul class="task-list" id="uber-confirm-list">
-        <li data-task="uberride4"><input type="checkbox" id="uberride4"><label for="uberride4"><strong>Confirm & Ride:</strong> Verify the driver's car model and license plate number match the app details <em>before</em> getting into the car.</label></li>
-    </ul>
+            <!-- Uber Prep Sub-section -->
+            <h4>4. Make Your Way to the Uber/Rideshare Pickup Area</h4>
+            <ul class="task-list" id="uber-prep-list">
+                <li data-task="uberprep1"><input type="checkbox" id="uberprep1"><label for="uberprep1"><strong>Follow Signs:</strong> Follow the signs for "Rideshare Pickup" or "Ground Transportation".</label></li>
+                <li data-task="uberprep2"><input type="checkbox" id="uberprep2"><label for="uberprep2"><strong>Location:</strong> The designated pickup area for Terminal B is located south of Terminal B in the hourly parking Lot 5.</label></li>
+            </ul>
+
+            <!-- Image for rideshare location -->
+            <div class="image-container">
+                <!-- Ensure 'rideshare.png' is in the same folder as this HTML file when you open it. -->
+                <img src="rideshare.png" alt="Map showing SJC Terminal B rideshare pickup area" style="border: 1px solid #ddd;">
+            </div>
+
+            <!-- Request Uber Sub-section -->
+            <h4>5. Request Your Uber</h4>
+            <ul class="task-list" id="uber-ride-list">
+                <li data-task="uberride1"><input type="checkbox" id="uberride1"><label for="uberride1"><strong>Open App:</strong> Once you are in the Lot 5 pickup area, open the Uber app.</label></li>
+                <li data-task="uberride2"><input type="checkbox" id="uberride2"><label for="uberride2"><strong>Estimated Cost:</strong> The ride to your destination will cost approximately <strong>$75</strong>. (Check dad transferred the money!)</label></li>
+                <li data-task="uberride3"><input type="checkbox" id="uberride3"><label for="uberride3"><strong>Enter Destination:</strong> Type the exact address into the destination field:</label></li>
+            </ul>
+            
+            <div class="uber-address">
+                <strong>Parking Lot 166, College Nine Rd, Santa Cruz</strong>
+            </div>
+
+            <ul class="task-list" id="uber-confirm-list">
+                <li data-task="uberride4"><input type="checkbox" id="uberride4"><label for="uberride4"><strong>Confirm & Ride:</strong> Verify the driver's car model and license plate number match the app details <em>before</em> getting into the car.</label></li>
+            </ul>
+        </div> <!-- End of Phase 2 Content -->
+
+    </div> <!-- End of Itinerary Content (Main Section) -->
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
         const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+        const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
+
+        // Function to check if all tasks in an ID are complete
+        const isListComplete = (listId) => {
+            const taskList = document.getElementById(listId);
+            if (!taskList) return true; // Treat empty list as complete for simplicity
+            const totalTasks = taskList.querySelectorAll('input[type="checkbox"]').length;
+            const completedTasks = taskList.querySelectorAll('input[type="checkbox"]:checked').length;
+            return totalTasks === completedTasks && totalTasks > 0;
+        };
+        
+        // Function to update section completion status
+        const updateSectionStatus = (elementId) => {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+
+            let allComplete = true;
+            
+            // Check all immediate task lists within the element
+            const immediateTaskLists = element.querySelectorAll(':scope > .task-list');
+            immediateTaskLists.forEach(list => {
+                if (!isListComplete(list.id)) {
+                    allComplete = false;
+                }
+            });
+
+            // Find the associated header and apply class
+            const header = document.querySelector(`.collapsible-header[data-target="${elementId}"]`);
+            if (header) {
+                if (allComplete) {
+                    header.classList.add('completed-section');
+                } else {
+                    header.classList.remove('completed-section');
+                }
+            }
+
+            // Also update parent section if necessary (e.g. Itinerary content updates main header)
+            const parentContent = element.closest('.collapsible-content');
+            if(parentContent && parentContent.id) {
+                updateSectionStatus(parentContent.id);
+            }
+        };
 
         // Function to load saved state from localStorage
         const loadState = () => {
@@ -190,6 +292,10 @@
                     checkbox.checked = true;
                     checkbox.parentElement.classList.add('completed');
                 }
+            });
+            // Update all sections' status after loading state
+            document.querySelectorAll('.collapsible-content').forEach(content => {
+                updateSectionStatus(content.id);
             });
         };
 
@@ -204,11 +310,28 @@
                 localStorage.removeItem(taskId);
                 checkbox.parentElement.classList.remove('completed');
             }
+            // Update parent section status(es)
+            const parentContent = checkbox.closest('.collapsible-content');
+            if (parentContent) {
+                updateSectionStatus(parentContent.id);
+            }
         };
 
         // Add event listeners to all checkboxes
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', saveState);
+        });
+
+        // Add event listeners for collapsing/expanding sections
+        collapsibleHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const targetId = header.getAttribute('data-target');
+                const targetContent = document.getElementById(targetId);
+                if (targetContent) {
+                    targetContent.classList.toggle('collapsed');
+                    header.classList.toggle('collapsed');
+                }
+            });
         });
 
         // Load state when the page loads
