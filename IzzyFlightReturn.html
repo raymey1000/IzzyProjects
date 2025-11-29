@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✈️ Flight Guide to SJC</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h2, h3, h4 {
+            color: #0056b3;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        .flight-info {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .task-list li {
+            list-style-type: none;
+            margin-bottom: 10px;
+        }
+        .task-list input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .task-list label {
+            cursor: pointer;
+            display: inline;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: #888;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .image-container {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .uber-address {
+            background-color: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+	<a href="index.html">⬅ Back to Index</a>
+    <h1>✈️ Your Flight Guide to SJC</h1>
+
+    <h3>Day Before Preparation</h3>
+    <ul class="task-list" id="prep-list">
+        <li data-task="prep1"><input type="checkbox" id="prep1"><label for="prep1">Move luggage into Pink Suitcase as you can use that on way back.</label></li>
+        <li data-task="prep2"><input type="checkbox" id="prep2"><label for="prep2">Check in online in your Alaska airlines app.</label></li>
+        <li data-task="prep3"><input type="checkbox" id="prep3"><label for="prep3">Make sure you have 'Uber App' downloaded (<a href="apps.apple.com" target="_blank">link</a>).</label></li>
+        <li data-task="prep4"><input type="checkbox" id="prep4"><label for="prep4">Practice putting in the pickup location.</label></li>
+    </ul>
+
+    <h3>✈️ Departure Day Itinerary</h3>
+
+    <h4>Phase 1: Departure in San Diego (SAN)</h4>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Activity</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>~12:30 PM</td>
+                <td>Leave Home</td>
+                <td>Drive time is about 40 mins to Shore House.</td>
+            </tr>
+            <tr>
+                <td>3:40 PM</td>
+                <td>Arrive at SAN Airport</td>
+                <td>Head straight to <strong>Terminal 2</strong> for Alaska Airlines.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="flight-info">
+        **Key Information:** Your flight, **Alaska Airlines 3498**, departs from **Terminal 2** at San Diego Airport (SAN).
+    </div>
+
+    <h4>1. Check in Bag and Go Through Security</h4>
+    <ul class="task-list" id="checkin-list">
+        <li data-task="checkin1"><input type="checkbox" id="checkin1"><label for="checkin1"><strong>Check-in:</strong> Proceed to the Alaska Airlines counter in Terminal 2 with your photo ID (e.g., driver's license or passport) to check your luggage.</label></li>
+        <li data-task="checkin2"><input type="checkbox" id="checkin2"><label for="checkin2"><strong>Security:</strong> Follow the signs for the TSA Security Checkpoint.</label></li>
+        <li data-task="checkin3"><input type="checkbox" id="checkin3"><label for="checkin3">Ensure liquids in your carry-on comply with <a href="www.tsa.gov" target="_blank">TSA's 3-1-1 liquids rule</a> (containers 3.4 oz or smaller in one clear, quart-sized bag).</label></li>
+    </ul>
+
+    <h4>2. Board Your Flight</h4>
+    <ul class="task-list" id="boarding-list">
+        <li data-task="board1"><input type="checkbox" id="board1"><label for="board1"><strong>Boarding Time:</strong> Boarding typically begins around <strong>5:10 PM</strong>.</label></li>
+        <li data-task="board2"><input type="checkbox" id="board2"><label for="board2"><strong>Departure Time:</strong> The flight is scheduled to leave at <strong>5:40 PM</strong> for San Jose (SJC).</label></li>
+        <li data-task="board3"><input type="checkbox" id="board3"><label for="board3"><strong>Gate:</strong> Check the airport monitors for the current gate number for Alaska Airlines 3498.</label></li>
+    </ul>
+
+    <h4>Phase 2: Arrival at San Jose Airport (SJC)</h4>
+
+    <h4>3. Pick Up Luggage at Baggage Claim</h4>
+    <ul class="task-list" id="baggage-list">
+        <li data-task="baggage1"><input type="checkbox" id="baggage1"><label for="baggage1"><strong>Follow Signs:</strong> After exiting the plane, follow the signs for "Baggage Claim".</label></li>
+        <li data-task="baggage2"><input type="checkbox" id="baggage2"><label for="baggage2"><strong>Location:</strong> Alaska Airlines arrives at <strong>Terminal B</strong> at SJC. The baggage claim is on the lower level.</label></li>
+        <li data-task="baggage3"><input type="checkbox" id="baggage3"><label for="baggage3"><strong>Carousel:</strong> Look for your flight number (3498) on the display monitors to confirm the correct carousel number (likely B1).</label></li>
+    </ul>
+
+    <h4>4. Make Your Way to the Uber/Rideshare Pickup Area</h4>
+    <ul class="task-list" id="uber-prep-list">
+        <li data-task="uberprep1"><input type="checkbox" id="uberprep1"><label for="uberprep1"><strong>Follow Signs:</strong> Follow the signs for "Rideshare Pickup" or "Ground Transportation".</label></li>
+        <li data-task="uberprep2"><input type="checkbox" id="uberprep2"><label for="uberprep2"><strong>Location:</strong> The designated pickup area for Terminal B is located <strong>south of Terminal B</strong> in the hourly parking Lot 5.</label></li>
+    </ul>
+
+    <h4>5. Request Your Uber</h4>
+    <ul class="task-list" id="uber-ride-list">
+        <li data-task="uberride1"><input type="checkbox" id="uberride1"><label for="uberride1"><strong>Open App:</strong> Once you are in the Lot 5 pickup area, open the Uber app.</label></li>
+        <li data-task="uberride2"><input type="checkbox" id="uberride2"><label for="uberride2"><strong>Estimated Cost:</strong> The ride to your destination will cost approximately <strong>$75</strong>. (Check dad transferred the money!)</label></li>
+        <li data-task="uberride3"><input type="checkbox" id="uberride3"><label for="uberride3"><strong>Enter Destination:</strong> Type the exact address into the destination field:</label></li>
+    </ul>
+    
+    <div class="uber-address">
+        <strong>Parking Lot 166, College Nine Rd, Santa Cruz</strong>
+    </div>
+
+    <ul class="task-list" id="uber-confirm-list">
+        <li data-task="uberride4"><input type="checkbox" id="uberride4"><label for="uberride4"><strong>Confirm & Ride:</strong> Verify the driver's car model and license plate number match the app details <em>before</em> getting into the car.</label></li>
+    </ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+        // Function to load saved state from localStorage
+        const loadState = () => {
+            checkboxes.forEach(checkbox => {
+                const taskId = checkbox.id;
+                const savedState = localStorage.getItem(taskId);
+                if (savedState === 'checked') {
+                    checkbox.checked = true;
+                    checkbox.parentElement.classList.add('completed');
+                }
+            });
+        };
+
+        // Function to save state to localStorage
+        const saveState = (event) => {
+            const checkbox = event.target;
+            const taskId = checkbox.id;
+            if (checkbox.checked) {
+                localStorage.setItem(taskId, 'checked');
+                checkbox.parentElement.classList.add('completed');
+            } else {
+                localStorage.removeItem(taskId);
+                checkbox.parentElement.classList.remove('completed');
+            }
+        };
+
+        // Add event listeners to all checkboxes
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', saveState);
+        });
+
+        // Load state when the page loads
+        loadState();
+    });
+</script>
+
+</body>
+</html>
