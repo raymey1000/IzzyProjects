@@ -55,6 +55,7 @@
             border-radius: 20px;
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            margin-bottom: 40px;
         }
 
         /* Header */
@@ -146,7 +147,7 @@
             padding: 20px;
             border-top: 1px solid var(--border);
             background: #f8fafc;
-            min-height: 120px;
+            min-height: 100px;
         }
 
         .event-card {
@@ -178,11 +179,68 @@
             text-transform: uppercase;
             font-weight: bold;
         }
+
+        /* NEW: Compact Month List */
+        .month-list {
+            padding: 0 20px 20px;
+            background: #f8fafc;
+        }
+        
+        .month-list h3 {
+            margin: 0 0 10px 0;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #64748b;
+            font-weight: 700;
+        }
+
+        .compact-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+        
+        .compact-item:last-child {
+            border-bottom: none;
+        }
+
+        .compact-date {
+            font-variant-numeric: tabular-nums;
+            font-weight: 600;
+            color: #334155;
+            width: 45px;
+            flex-shrink: 0;
+        }
+
+        .compact-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .compact-title {
+            color: var(--text-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .compact-faint {
+            color: #94a3b8;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+
     </style>
 </head>
 <body>
 
-<!-- Back Button Added Here -->
+<!-- Back Button -->
 <a href="index.html" class="back-button">⬅ Back to Index</a>
 
 <div class="app-container">
@@ -200,6 +258,11 @@
         <div style="text-align: center; color: #94a3b8; margin-top: 30px;">
             Select a date to view details
         </div>
+    </div>
+
+    <!-- NEW: Month List Section -->
+    <div class="month-list" id="monthList">
+        <!-- JS will inject list here -->
     </div>
 </div>
 
@@ -275,8 +338,8 @@
             const cell = document.createElement('div');
             cell.className = 'day-cell';
             
-            const currentDayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i, 12, 0, 0);
             // Use noon to avoid timezone shifting issues
+            const currentDayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i, 12, 0, 0);
             
             // Number
             const num = document.createElement('div');
@@ -307,6 +370,9 @@
 
             grid.appendChild(cell);
         }
+
+        // Update Month List
+        renderMonthList(monthNames[currentDate.getMonth()]);
     }
 
     function renderDetails(event, day, month) {
@@ -320,8 +386,51 @@
         `;
     }
 
+    function renderMonthList(monthName) {
+        const listContainer = document.getElementById('monthList');
+        listContainer.innerHTML = `<h3>Events in ${monthName}</h3>`;
+
+        // Filter events that occur in this month
+        // Logic: Event Start <= Month End AND Event End >= Month Start
+        const currentMonthStart = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+        const currentMonthEnd = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+
+        // Convert to YYYY-MM-DD strings for easy comparison with raw data
+        const mStartStr = currentMonthStart.toISOString().split('T')[0];
+        const mEndStr = currentMonthEnd.toISOString().split('T')[0];
+
+        const eventsInView = rawEvents.filter(e => {
+            const eStart = e.date;
+            const eEnd = e.endDate || e.date;
+            return eStart <= mEndStr && eEnd >= mStartStr;
+        });
+
+        // Sort by date
+        eventsInView.sort((a, b) => a.date.localeCompare(b.date));
+
+        if (eventsInView.length === 0) {
+            listContainer.innerHTML += `<div class="compact-item"><span class="compact-faint">No events this month</span></div>`;
+            return;
+        }
+
+        eventsInView.forEach(e => {
+            const dayStr = e.date.split('-')[2]; // Extract DD
+            const html = `
+                <div class="compact-item">
+                    <div class="compact-date">${dayStr}</div>
+                    <div class="compact-dot" style="background: ${colors[e.type]}"></div>
+                    <div class="compact-title">${e.title}</div>
+                </div>
+            `;
+            listContainer.innerHTML += html;
+        });
+    }
+
     function changeMonth(delta) {
         currentDate.setMonth(currentDate.getMonth() + delta);
+        // Reset details panel when changing months
+        document.getElementById('details').innerHTML = 
+            '<div style="text-align: center; color: #94a3b8; margin-top: 30px;">Select a date to view details</div>';
         renderCalendar();
     }
 
