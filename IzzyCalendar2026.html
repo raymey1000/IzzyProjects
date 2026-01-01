@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Calendar 2026</title>
+    <style>
+        :root {
+            --school: #2563EB;
+            --family: #10B981;
+            --fun: #DB2777;
+            --holiday: #F97316;
+            --text-dark: #1e293b;
+            --bg-light: #ffffff;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: #f8fafc;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Navigation Button */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
+        }
+
+        .back-button:hover {
+            color: var(--school);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: translateY(-1px);
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+
+        /* Grid */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            padding: 10px;
+            gap: 5px;
+        }
+
+        .day-label {
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #64748b;
+            padding-bottom: 10px;
+        }
+
+        .day-cell {
+            aspect-ratio: 1/1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .day-cell:hover {
+            background: #f1f5f9;
+        }
+
+        .day-cell.selected {
+            background: #e0f2fe;
+            border: 2px solid var(--school);
+        }
+
+        .day-number {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .day-cell.empty {
+            pointer-events: none;
+        }
+
+        /* Dots */
+        .dots-container {
+            display: flex;
+            gap: 3px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+        }
+
+        /* Details Panel */
+        .details-panel {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            background: #f8fafc;
+            min-height: 120px;
+        }
+
+        .event-card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            border-left: 5px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .event-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .event-desc {
+            font-size: 0.9rem;
+            color: #475569;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back Button Added Here -->
+<a href="index.html" class="back-button">⬅ Back to Index</a>
+
+<div class="app-container">
+    <div class="header">
+        <button class="nav-btn" onclick="changeMonth(-1)">&lt;</button>
+        <h2 id="monthTitle">January 2026</h2>
+        <button class="nav-btn" onclick="changeMonth(1)">&gt;</button>
+    </div>
+
+    <div class="calendar-grid" id="grid">
+        <!-- JS will inject days here -->
+    </div>
+
+    <div class="details-panel" id="details">
+        <div style="text-align: center; color: #94a3b8; margin-top: 30px;">
+            Select a date to view details
+        </div>
+    </div>
+</div>
+
+<script>
+    // --- DATA ---
+    const rawEvents = [
+        { date: "2026-01-05", title: "UCSC Winter Quarter Begins", type: "school", desc: "Start of winter instruction." },
+        { date: "2026-01-13", endDate: "2026-01-19", title: "London Trip", type: "family", desc: "Ray going to London for Robbie’s 50th." },
+        { date: "2026-01-22", title: "Teeth Whitening", type: "family", desc: "Cait's appointment." },
+        { date: "2026-02-16", title: "Presidents’ Day", type: "holiday", desc: "Federal holiday." },
+        { date: "2026-02-27", title: "UCSC eBill/ePay Due", type: "school", desc: "Registration & housing fees due." },
+        { date: "2026-03-13", title: "Winter Instruction Ends", type: "school", desc: "Last day of classes." },
+        { date: "2026-03-16", endDate: "2026-03-20", title: "UCSC Winter Finals", type: "school", desc: "Examination week." },
+        { date: "2026-03-18", title: "British Comedian", type: "fun", desc: "Helen & Ray night out." },
+        { date: "2026-03-20", title: "Winter Quarter Ends", type: "school", desc: "End of quarter." },
+        { date: "2026-03-24", title: "Deadlines Due", type: "school", desc: "Winter Grades & Housing Fees Due." },
+        { date: "2026-03-27", title: "César Chávez Day", type: "holiday", desc: "State holiday." },
+        { date: "2026-03-30", title: "Spring Quarter Begins", type: "school", desc: "Start of spring instruction." },
+        { date: "2026-04-10", endDate: "2026-04-12", title: "Coachella", type: "fun", desc: "Cait going to Coachella." },
+        { date: "2026-05-25", title: "Memorial Day", type: "holiday", desc: "Federal holiday." },
+        { date: "2026-05-31", title: "Rock 'n' Roll Half Marathon", type: "fun", desc: "Cait & Michael running in San Diego." },
+        { date: "2026-06-05", title: "Spring Instruction Ends", type: "school", desc: "Last day of classes." },
+        { date: "2026-06-08", endDate: "2026-06-11", title: "UCSC Spring Finals", type: "school", desc: "Examination week." },
+        { date: "2026-06-11", title: "Spring Quarter Ends", type: "school", desc: "End of spring quarter." },
+        { date: "2026-06-16", title: "Spring Grades Due", type: "school", desc: "Grades deadline." },
+        { date: "2026-06-19", title: "Juneteenth", type: "holiday", desc: "Federal holiday." },
+        { date: "2026-07-03", title: "Independence Day (Obs)", type: "holiday", desc: "Federal holiday observed." },
+        { date: "2026-07-21", title: "Ed Sheeran Concert", type: "fun", desc: "The LOOP Tour at Petco Park." },
+        { date: "2026-09-07", title: "Labor Day", type: "holiday", desc: "Federal holiday." }
+    ];
+
+    // --- STATE ---
+    let currentDate = new Date(2026, 0, 1); // Start Jan 2026
+    const colors = { school: 'var(--school)', family: 'var(--family)', fun: 'var(--fun)', holiday: 'var(--holiday)' };
+
+    // --- LOGIC ---
+    function getEventsForDate(d) {
+        const dateStr = d.toISOString().split('T')[0];
+        return rawEvents.filter(e => {
+            if (e.endDate) return dateStr >= e.date && dateStr <= e.endDate;
+            return e.date === dateStr;
+        });
+    }
+
+    function renderCalendar() {
+        const grid = document.getElementById('grid');
+        const monthTitle = document.getElementById('monthTitle');
+        grid.innerHTML = '';
+
+        // Set Header
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        monthTitle.innerText = `${monthNames[currentDate.getMonth()]} ${currentDate.getFullYear()}`;
+
+        // Day Labels
+        ['S', 'M', 'T', 'W', 'T', 'F', 'S'].forEach(day => {
+            const el = document.createElement('div');
+            el.className = 'day-label';
+            el.innerText = day;
+            grid.appendChild(el);
+        });
+
+        // Empty Slots
+        const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1).getDay();
+        for (let i = 0; i < firstDay; i++) {
+            const el = document.createElement('div');
+            el.className = 'day-cell empty';
+            grid.appendChild(el);
+        }
+
+        // Days
+        const daysInMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0).getDate();
+        for (let i = 1; i <= daysInMonth; i++) {
+            const cell = document.createElement('div');
+            cell.className = 'day-cell';
+            
+            const currentDayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), i, 12, 0, 0);
+            // Use noon to avoid timezone shifting issues
+            
+            // Number
+            const num = document.createElement('div');
+            num.className = 'day-number';
+            num.innerText = i;
+            cell.appendChild(num);
+
+            // Events
+            const daysEvents = getEventsForDate(currentDayDate);
+            if (daysEvents.length > 0) {
+                const dotsDiv = document.createElement('div');
+                dotsDiv.className = 'dots-container';
+                daysEvents.forEach(ev => {
+                    const dot = document.createElement('div');
+                    dot.className = 'dot';
+                    dot.style.backgroundColor = colors[ev.type];
+                    dotsDiv.appendChild(dot);
+                });
+                cell.appendChild(dotsDiv);
+                
+                // Interaction
+                cell.onclick = () => {
+                    document.querySelectorAll('.day-cell').forEach(c => c.classList.remove('selected'));
+                    cell.classList.add('selected');
+                    renderDetails(daysEvents[0], i, monthNames[currentDate.getMonth()]);
+                };
+            }
+
+            grid.appendChild(cell);
+        }
+    }
+
+    function renderDetails(event, day, month) {
+        const details = document.getElementById('details');
+        details.innerHTML = `
+            <div class="event-card" style="border-color: ${colors[event.type]}">
+                <span class="badge" style="background: ${colors[event.type]}">${event.type}</span>
+                <div class="event-title">${event.title}</div>
+                <div class="event-desc">${month} ${day} • ${event.desc}</div>
+            </div>
+        `;
+    }
+
+    function changeMonth(delta) {
+        currentDate.setMonth(currentDate.getMonth() + delta);
+        renderCalendar();
+    }
+
+    // Init
+    renderCalendar();
+</script>
+
+</body>
+</html>
