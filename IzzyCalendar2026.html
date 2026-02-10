@@ -282,7 +282,8 @@
     const rawEvents = [];
 	
 	// Example usage:
-	loadEvents().then(rawEvents => {
+	loadEvents().then( events => {
+	  rawEvents = events;
 	  console.log("Loaded events:", rawEvents);
 	});
 
