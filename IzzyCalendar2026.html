@@ -281,12 +281,6 @@
     // --- DATA ---
     let rawEvents = [];
 	
-	// Example usage:
-	loadEvents().then( events => {
-	  rawEvents = events;
-	  console.log("Loaded events:", rawEvents);
-	});
-
 
 	/*
 		{ date: "2026-01-05", title: "UCSC Winter Quarter Begins", type: "school", desc: "Start of winter instruction." },
@@ -468,8 +462,15 @@
         renderCalendar();
     }
 
-    // Init
-    renderCalendar();
+	loadEvents().then( events => {
+	  rawEvents = events;
+	  console.log("Loaded events:", rawEvents);
+	  
+		// Init
+		renderCalendar();
+	});
+
+
 </script>
 
 </body>
